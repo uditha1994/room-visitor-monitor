@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Visitor Count</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- connection status -->
+    <div id="connectionStatus" class="connection-status disconnected">
+        <i class="fas fa-wifi"></i> Connecting...
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a href="#" class="navbar-brand">
+                <i class="fas fa-users"></i> Room Visitor Counter
+                <span id="deviceStatus" class="status-indicator status-offline"></span>
+            </a>
+            <button class="refresh-btn">
+                <i class="fas fa-sync-alt"></i> Refresh
+            </button>
+        </div>
+    </nav>
+
+    <!-- Dashboard -->
+    <div class="dashboard-container">
+        <div class="container-fluid">
+            <!-- statistics cards -->
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="stat-card current-count">
+                        <div class="stat-icon current-count">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-number" id="currentCount">0</div>
+                        <div class="stat-label">People Inside</div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="stat-card total-entries">
+                        <div class="stat-icon total-entries">
+                            <i class="fas fa-sign-in-alt"></i>
+                        </div>
+                        <div class="stat-number" id="totalEntries">0</div>
+                        <div class="stat-label">Total Entries</div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="stat-card total-exits">
+                        <div class="stat-icon total-exits">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </div>
+                        <div class="stat-number" id="totalExits">0</div>
+                        <div class="stat-label">Total Exits</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- charts and activity log -->
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="chart-container">
+                        <h4 class="chart-title">
+                            <i class="fas fa-chart-line"></i> Activity Chart
+                        </h4>
+                        <div class="chart-wrapper">
+                            <div class="chart-loading" id="chartLoading">
+                                <div class="loading-spinner"></div>
+                                <p class="mt-2">Loading Chart...</p>
+                            </div>
+                            <div class="chart-no-data" id="chartNoData" style="display: none;">
+                                <i class="fas fa-chart-line fa-3x mb-3"></i>
+                                <p>No data available yet</p>
+                                <small>Data will appers as activity is detected</small>
+                            </div>
+                            <canvas id="activityChart" style="display: none;"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="activity-log">
+                        <h4 class="chart-title">
+                            <i class="fas fa-history"></i> Recent Activity
+                        </h4>
+                        <div class="activity-log-content" id="activtyLog">
+                            <div class="text-center">
+                                <div class="loading-spinner"></div>
+                                <p class="mt-2">Loading acivity...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Last update info -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="last-update">
+                        <i class="fas fa-clock"> Last updated:
+                            <span id="lastUpdate">Never</span>
+                        </i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database-compat.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
