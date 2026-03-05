@@ -351,7 +351,7 @@ function refreshData() {
     });
 
     //refresh logs
-    database.ref('roomCounter/logs').limitToLast(20).once('values').then((snapshot) => {
+    database.ref('roomCounter/logs').limitToLast(20).once('value').then((snapshot) => {
         const logs = snapshot.val();
         if (logs) {
             updateActivityLog(logs);

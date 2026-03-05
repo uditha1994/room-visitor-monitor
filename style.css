@@ -35,11 +35,31 @@ body {
     padding: 1rem 0;
 }
 
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
 .navbar-brand {
     font-weight: 700;
     font-size: 1.5rem;
     color: white !important;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
+
+/* Navbar right section */
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
 
 .status-indicator {
     display: inline-block;
@@ -277,18 +297,29 @@ body {
 }
 
 .refresh-btn {
-    background: var(--gradient-primary);
-    border: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
     border-radius: 10px;
-    padding: 0.5rem 1rem;
+    padding: 8px 16px;
     color: white;
     font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
     transition: all 0.3s ease;
+    white-space: nowrap;
 }
 
 .refresh-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
     transform: translateY(-2px);
-    box-shadow: var(--shadow-soft);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.refresh-btn:active {
+    transform: translateY(0);
 }
 
 .last-update {
@@ -314,21 +345,62 @@ body {
 }
 
 .connection-status {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    padding: 0.5rem 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
     border-radius: 25px;
     color: white;
     font-weight: 500;
-    z-index: 1000;
+    font-size: 14px;
     transition: all 0.3s ease;
+    white-space: nowrap;
 }
 
 .connection-status.connected {
-    background: var(--gradient-success);
+    background: rgba(72, 187, 120, 0.9);
+    box-shadow: 0 2px 10px rgba(72, 187, 120, 0.3);
 }
 
 .connection-status.disconnected {
-    background: var(--gradient-danger);
+    background: rgba(245, 101, 101, 0.9);
+    box-shadow: 0 2px 10px rgba(245, 101, 101, 0.3);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .navbar .container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+
+    .navbar-right {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .connection-status,
+    .refresh-btn {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-right {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .connection-status,
+    .refresh-btn {
+        width: 100%;
+        justify-content: center;
+    }
 }
